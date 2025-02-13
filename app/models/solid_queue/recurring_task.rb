@@ -103,7 +103,10 @@ module SolidQueue
 
     private
       def supported_schedule
-        unless parsed_schedule.instance_of?(Fugit::Cron)
+        puts "check-------------"
+        puts "parsed_schedule: #{parsed_schedule}"
+        puts "check-------------"
+        unless (parsed_schedule.instance_of?(Fugit::Cron) || parsed_schedule.instance_of?(EtOrbi::EoTime))
           errors.add :schedule, :unsupported, message: "is not a supported recurring schedule"
         end
       end
